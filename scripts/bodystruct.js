@@ -32,7 +32,23 @@ function switchColorMode() {
   body.classList.toggle("dark-mode");
   if (body.classList.contains("dark-mode")) {
     colorMode.textContent = "Light Mode";
+    localStorage.setItem("colorMode", "dark");
   } else {
+    colorMode.textContent = "Dark Mode";
+    localStorage.setItem("colorMode", "light");
+  }
+}
+
+function applyStoredColorMode() {
+  const storedColorMode = localStorage.getItem("colorMode");
+  const body = document.querySelector("body");
+  const colorMode = document.querySelector("#color-mode");
+
+  if (storedColorMode === "dark") {
+    body.classList.add("dark-mode");
+    colorMode.textContent = "Light Mode";
+  } else {
+    body.classList.remove("dark-mode");
     colorMode.textContent = "Dark Mode";
   }
 }
@@ -44,11 +60,11 @@ window.addEventListener("DOMContentLoaded", function () {
   document.addEventListener("readystatechange", function () {
     // assure that the document is fully loaded
     if (document.readyState === "complete") {
-      // assure that whole page has been loaded (completed)
+      applyStoredColorMode();
       document
         .querySelector("#color-mode")
         .addEventListener("click", switchColorMode);
-        document.querySelector("body").style.display = "block";
+      document.querySelector("body").style.display = "block";
     }
   });
 });
