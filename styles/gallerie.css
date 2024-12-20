@@ -29,3 +29,7 @@
   object-fit: cover;
   border-radius: 3px;
 }
+
+.drag-over{
+  filter: blur(20px);
+}

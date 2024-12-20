@@ -52,8 +52,8 @@ document.addEventListener("DOMContentLoaded", () => {
       loadImages();
     }
   }
-
   let draggedElement = null;
+
   function handleDragStart(event) {
     draggedElement = event.target;
     event.dataTransfer.setData("text/plain", null);
@@ -61,10 +61,15 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function handleDragOver(event) {
     event.preventDefault();
+    document.querySelectorAll(".drag-over").forEach((element) => {
+      element.classList.remove("drag-over");
+    });
+    event.target.classList.add("drag-over");
   }
 
   function handleDrop(event) {
     event.preventDefault();
+    event.target.classList.remove("drag-over");
     if (draggedElement !== event.target) {
       galleryContainer.insertBefore(draggedElement, event.target);
     }
