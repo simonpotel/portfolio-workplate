@@ -9,8 +9,8 @@ document.addEventListener("DOMContentLoaded", () => {
     "https://images.pexels.com/photos/28387802/pexels-photo-28387802.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load",
     "https://images.pexels.com/photos/29529568/pexels-photo-29529568/free-photo-of-raviolis-chinois-traditionnels-a-la-sauce-soja.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load",
     "https://images.pexels.com/photos/29498917/pexels-photo-29498917/free-photo-of-colonnes-romaines-antiques-dans-le-latium-italie.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load",
-    "https://images.pexels.com/photos/29535051/pexels-photo-29535051.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
-];
+    "https://images.pexels.com/photos/29535051/pexels-photo-29535051.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load",
+  ];
 
   let currentIndex = 0;
   const imagesPerLoad = 10;
