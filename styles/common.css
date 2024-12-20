@@ -26,29 +26,50 @@ nav ul {
   list-style: none;
 }
 
-.clickable:hover {
+button {
+  text-decoration: none;
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+  border-radius: 12px;
+  padding: 12px;
+  letter-spacing: 1px;
+  border-width: 1px;
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+button:hover {
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+}
+
+button:active {
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+}
+
+.nav-item:hover {
   color: var(--primary-color);
   background-color: var(--secondary-color);
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
-.clickable {
+.nav-item {
   text-decoration: none;
   color: var(--secondary-color);
   background-color: var(--primary-color);
-  width: 50px;
-  height: 50px;
   border-radius: 12px;
   padding: 10px;
   letter-spacing: 1px;
+  border-width: 0;
 }
 
-body.dark-mode .clickable:hover {
+body.dark-mode .nav-item:hover {
   color: var(--primary-color);
   background-color: var(--secondary-color);
 }
 
-body.dark-mode .clickable {
+body.dark-mode .nav-item {
   color: var(--secondary-color);
   background-color: None;
 }
@@ -56,10 +77,11 @@ body.dark-mode .clickable {
 .title h1 {
   display: flex;
   justify-content: flex-end;
-  margin-top: 50vh;
+  margin-top: 25vh;
   color: var(--secondary-color);
   letter-spacing: 10px;
   font-size: 7rem;
+  width: 45vw;
 }
 
 footer {
