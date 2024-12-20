@@ -27,7 +27,7 @@ function loadFooter() {
 }
 
 function switchColorMode() {
-  const colorMode = document.querySelector(".color-mode"); // content can be 'Dark Mode' or 'Light Mode'
+  const colorMode = document.querySelector("#color-mode"); // content can be 'Dark Mode' or 'Light Mode'
   const body = document.querySelector("body");
   body.classList.toggle("dark-mode");
   if (body.classList.contains("dark-mode")) {
@@ -46,7 +46,7 @@ window.addEventListener("DOMContentLoaded", function () {
     if (document.readyState === "complete") {
       // assure that whole page has been loaded (completed)
       document
-        .querySelector(".color-mode")
+        .querySelector("#color-mode")
         .addEventListener("click", switchColorMode);
         document.querySelector("body").style.display = "block";
     }
