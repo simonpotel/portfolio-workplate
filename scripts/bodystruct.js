@@ -26,7 +26,26 @@ function loadFooter() {
   footerRequest.send();
 }
 
+function switchColorMode() {
+  const colorMode = document.querySelector(".color-mode").textContent; // content can be 'Dark Mode' or 'Light Mode'
+  const body = document.querySelector("body");
+  body.classList.toggle("dark-mode");
+  colorMode === "Dark Mode"
+    ? (document.querySelector(".color-mode").textContent = "Light Mode")
+    : (document.querySelector(".color-mode").textContent = "Dark Mode");
+}
+
 window.addEventListener("DOMContentLoaded", function () {
   loadHeader();
   loadFooter();
+
+  document.addEventListener("readystatechange", function () {
+    // assure that the document is fully loaded
+    if (document.readyState === "complete") {
+      // assure that whole page has been loaded (completed)
+      document
+        .querySelector(".color-mode")
+        .addEventListener("click", switchColorMode);
+    }
+  });
 });

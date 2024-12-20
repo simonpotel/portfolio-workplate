@@ -1,24 +1,20 @@
-:root {
+body {
   /*font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;*/
   font-family: YuGothic, YuGothicM, "Hiragino Kaku Gothic ProN", Meiryo,
     sans-serif;
-  background-color: rgb(255, 255, 255);
+  --primary-color: rgb(255, 255, 255);
+  --secondary-color: rgb(0, 0, 0);
+  background-color: var(--primary-color);
   padding: 0%;
   margin: 0%;
 }
 
-#title h1 {
-  display: flex;
-  justify-content: flex-end;
-  margin-top: 50vh;
+body.dark-mode {
+  --primary-color: rgb(0, 0, 0);
+  --secondary-color: rgb(255, 255, 255);
 }
 
-h1 {
-  color: rgb(0, 0, 0);
-  letter-spacing: 10px;
-  font-size: 7rem;
-}
 nav {
   margin-right: 50px;
 }
@@ -30,14 +26,14 @@ nav ul {
 }
 
 nav a:hover {
-  color: white;
-  background-color: black;
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
 }
 
 nav a {
   text-decoration: none;
-  color: black;
-  background-color: white;
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
   width: 50px;
   height: 50px;
   border-radius: 12px;
@@ -45,6 +41,28 @@ nav a {
   letter-spacing: 1px;
 }
 
+body.dark-mode nav a:hover {
+  color: var(--primary-color);
+  background-color: var(--secondary-color);
+}
+
+body.dark-mode nav a {
+  color: var(--secondary-color);
+  background-color: None;
+}
+
+.title h1 {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 50vh;
+  color: var(--secondary-color);
+  letter-spacing: 10px;
+  font-size: 7rem;
+}
+
 footer {
-  background-color: black;
+  display: flex;
+  justify-content: center;
+  padding: 25px;
+  color: var(--secondary-color);
 }

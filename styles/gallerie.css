@@ -3,22 +3,24 @@
 }
 
 #gallery {
-  background-color: black;
-  color: white;
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
   margin-top: 25vh;
 }
 
 #gallery h1 {
-  color: white;
+  color: var(--primary-color);
   display: flex;
   justify-content: flex-start;
   margin-left: 15vw;
+  color: var(--primary-color);
+  letter-spacing: 10px;
+  font-size: 7rem;
 }
 
 #images {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1px;
 }
 
 #images img {
