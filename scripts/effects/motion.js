@@ -15,10 +15,18 @@ function onMouseMove(event) {
   mouseY = event.clientY;
 }
 
+function onMouseEnter() {
+  cursor.style.display = 'block';
+}
+
+function onMouseLeave() {
+  cursor.style.display = 'none';
+}
+
 function initCursor() {
   for (let i = 0; i < TAIL_LENGTH; i++) {
     let div = document.createElement('div');
-    div.classList.add('cursor-circle') ;
+    div.classList.add('cursor-circle');
     cursor.append(div);
   }
   cursorCircles = Array.from(document.querySelectorAll('.cursor-circle'));
@@ -43,6 +51,8 @@ function updateCursor() {
 }
 
 document.addEventListener('mousemove', onMouseMove, false);
+document.addEventListener('mouseenter', onMouseEnter, false);
+document.addEventListener('mouseleave', onMouseLeave, false);
 
 initCursor();
 updateCursor();
