@@ -19,11 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
   function loadImages() {
     const fragment = document.createDocumentFragment();
-    console.log(currentIndex, imageUrls.length);
     if (currentIndex == imageUrls.length) {
       currentIndex = 0;
       loadingIndicator.style.display = "none";
-      //window.scrollTo(0, galleryContainer.offsetTop);
       return;
     }
     loadingIndicator.style.display = "block";
@@ -35,7 +33,11 @@ document.addEventListener("DOMContentLoaded", () => {
     ) {
       const img = document.createElement("img");
       img.src = imageUrls[currentIndex];
+      img.draggable = true;
       img.alt = `Image ${currentIndex + 1}`;
+      img.addEventListener("dragstart", handleDragStart);
+      img.addEventListener("dragover", handleDragOver);
+      img.addEventListener("drop", handleDrop);
       fragment.appendChild(img);
     }
 
@@ -48,6 +50,23 @@ document.addEventListener("DOMContentLoaded", () => {
       document.body.offsetHeight - 100
     ) {
       loadImages();
+    }
+  }
+
+  let draggedElement = null;
+  function handleDragStart(event) {
+    draggedElement = event.target;
+    event.dataTransfer.setData("text/plain", null);
+  }
+
+  function handleDragOver(event) {
+    event.preventDefault();
+  }
+
+  function handleDrop(event) {
+    event.preventDefault();
+    if (draggedElement !== event.target) {
+      galleryContainer.insertBefore(draggedElement, event.target);
     }
   }
 
