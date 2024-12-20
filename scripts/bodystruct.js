@@ -1,6 +1,4 @@
-// code qui permet de charger le header et de gérer les iframes
-// si on est dans une iframe, on ajoute une classe iframe-manager à body
-// pour pouvoir gérer en css le contenu des iframes sans à ravoir à faire une autre page html
+// can load the same header and footer on all pages.
 
 function loadHeader() {
   const headerContainer = document.querySelector("header");
