@@ -16,15 +16,33 @@ document.addEventListener("DOMContentLoaded", () => {
   const imagesPerLoad = 2;
   const galleryContainer = document.getElementById("images");
   const loadingIndicator = document.getElementById("loadind");
+  const fetchApiPhotos = false;
 
-  function loadImages() {
+  async function getRandomImage() {
+    try {
+      const response = await fetch("https://picsum.photos/200/300", {
+        cache: "no-store", // no cache so we dont put the same one
+      });
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.url; // picsum.photos redirects to the actual random image URL
+    } catch (error) {
+      console.error("Error fetching random image:", error);
+      return "https://picsum.photos/200/300"; // fallback if error
+    }
+  }
+
+  async function loadImages() {
     const fragment = document.createDocumentFragment();
-    if (currentIndex == imageUrls.length) {
+    if (currentIndex >= imageUrls.length) {
       currentIndex = 0;
       loadingIndicator.style.display = "none";
       return;
     }
     loadingIndicator.style.display = "block";
+
+    const loadPromises = [];
 
     for (
       let i = 0;
@@ -32,7 +50,16 @@ document.addEventListener("DOMContentLoaded", () => {
       i++, currentIndex++
     ) {
       const img = document.createElement("img");
-      img.src = imageUrls[currentIndex];
+
+      if (fetchApiPhotos) {
+        const imagePromise = getRandomImage().then((imageUrl) => {
+          img.src = imageUrl;
+        });
+        loadPromises.push(imagePromise);
+      } else {
+        img.src = imageUrls[currentIndex];
+      }
+
       img.draggable = true;
       img.alt = `Image ${currentIndex + 1}`;
       img.addEventListener("dragstart", handleDragStart);
@@ -40,6 +67,8 @@ document.addEventListener("DOMContentLoaded", () => {
       img.addEventListener("drop", handleDrop);
       fragment.appendChild(img);
     }
+
+    await Promise.all(loadPromises); // wait all images are loaded
 
     galleryContainer.appendChild(fragment);
   }
@@ -52,6 +81,7 @@ document.addEventListener("DOMContentLoaded", () => {
       loadImages();
     }
   }
+
   let draggedElement = null;
 
   function handleDragStart(event) {
@@ -76,4 +106,5 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   window.addEventListener("scroll", handleScroll);
+  loadImages();
 });
