@@ -7,6 +7,7 @@ body {
   --primary-color: rgb(255, 255, 255);
   --secondary-color: rgb(0, 0, 0);
   background-color: var(--primary-color);
+  color: var(--secondary-color);
   padding: 0%;
   margin: 0%;
   display: none;
@@ -82,10 +83,7 @@ button::after {
   top: 0;
   width: 120%;
   height: 100%;
-  background: linear-gradient(
-    90deg,
-    rgba(255, 255, 255, 0.1)
-  );
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.1));
   transform: translateX(-100%) skewX(-15deg);
   z-index: -1;
 }
@@ -131,7 +129,6 @@ body.dark-mode .nav-item {
   display: flex;
   justify-content: flex-end;
   margin-top: 25vh;
-  color: var(--secondary-color);
   letter-spacing: 10px;
   font-size: 7rem;
   width: 45vw;
@@ -142,5 +139,4 @@ footer {
   display: flex;
   justify-content: center;
   padding: 25px;
-  color: var(--secondary-color);
 }
