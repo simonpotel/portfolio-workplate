@@ -27,12 +27,14 @@ function loadFooter() {
 }
 
 function switchColorMode() {
-  const colorMode = document.querySelector(".color-mode").textContent; // content can be 'Dark Mode' or 'Light Mode'
+  const colorMode = document.querySelector(".color-mode"); // content can be 'Dark Mode' or 'Light Mode'
   const body = document.querySelector("body");
   body.classList.toggle("dark-mode");
-  colorMode === "Dark Mode"
-    ? (document.querySelector(".color-mode").textContent = "Light Mode")
-    : (document.querySelector(".color-mode").textContent = "Dark Mode");
+  if (body.classList.contains("dark-mode")) {
+    colorMode.textContent = "Light Mode";
+  } else {
+    colorMode.textContent = "Dark Mode";
+  }
 }
 
 window.addEventListener("DOMContentLoaded", function () {

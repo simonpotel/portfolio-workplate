@@ -45,15 +45,8 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  window.addEventListener("scroll", handleScroll);
 
   loadImages();
 
-  window.addEventListener("scroll", function () {
-    const scrolled = window.scrollY; // Pixels défilés verticalement
-    const documentHeight =
-      document.documentElement.scrollHeight - window.innerHeight;
-    const progress = (scrolled / documentHeight) * 100;
-    console.log(`Progression : ${progress.toFixed(2)}%`);
-  });
+
 });
