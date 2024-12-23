@@ -3,3 +3,5 @@ Portfolio created during the JS Course at SUPINFO, showcasing JavaScript for web
 
 > [!IMPORTANT]  
 > The website is not responsive, as it was not the focus of this course.
+
+![](https://github.com/simonpotel/portfolio/blob/master/docs/pres.gif)
